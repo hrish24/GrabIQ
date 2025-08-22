@@ -1,6 +1,6 @@
 import React from 'react';
 import { Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Divider, Box, Typography } from '@mui/material';
-import { Dashboard as DashboardIcon, Settings as ConfigureIcon, Person as PersonIcon, Palette as PaletteIcon, Logout as LogoutIcon } from '@mui/icons-material';
+import { Dashboard as DashboardIcon, Settings as ConfigureIcon, Person as PersonIcon, Palette as PaletteIcon, Logout as LogoutIcon, Work as WorkIcon, History as HistoryIcon, Business as BusinessIcon, Assessment as AssessmentIcon } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import styles from './Sidebar.module.css';
@@ -20,6 +20,21 @@ const Sidebar: React.FC = () => {
 
   const isActiveRoute = (path: string) => {
     return location.pathname.includes(path);
+  };
+  const listItemButtonStyle = {
+    mx: 1,
+    borderRadius: 1,
+    color: theme.palette.text.primary,
+    '&.Mui-selected': {
+      backgroundColor: theme.palette.primary.main + '1F', // 12% opacity
+      color: theme.palette.primary.main,
+      '&:hover': {
+        backgroundColor: theme.palette.primary.main + '29', // 16% opacity
+      },
+    },
+    '&:hover': {
+      backgroundColor: theme.palette.action.hover,
+    },
   };
 
   return (
@@ -47,7 +62,7 @@ const Sidebar: React.FC = () => {
       >
         <Box sx={{ overflow: 'auto', height: '100%' }}>
           <Box sx={{ p: 2, textAlign: 'center', mt: 7 }}>
-            <Typography variant="h5" component="div" className={styles.sidebarLogo} sx={{ color: theme.palette.primary.main }}>
+            <Typography variant="h5" component="div" className={styles.sidebarLogo} color='primary'>
               GrabIQ
             </Typography>
           </Box>
@@ -55,52 +70,51 @@ const Sidebar: React.FC = () => {
 
           <List sx={{ pt: 2 }}>
             <ListItem disablePadding>
-              <ListItemButton
-                onClick={() => handleNavigate('/dashboard')}
-                selected={isActiveRoute('/dashboard')}
-                sx={{
-                  mx: 1,
-                  borderRadius: 1,
-                  color: theme.palette.text.primary,
-                  '&.Mui-selected': {
-                    backgroundColor: theme.palette.primary.main + '1F', // 12% opacity
-                    color: theme.palette.primary.main,
-                    '&:hover': {
-                      backgroundColor: theme.palette.primary.main + '29', // 16% opacity
-                    },
-                  },
-                  '&:hover': {
-                    backgroundColor: theme.palette.action.hover,
-                  },
-                }}
-              >
+              <ListItemButton onClick={() => handleNavigate('/dashboard')} selected={isActiveRoute('/dashboard')} sx={listItemButtonStyle}>
                 <ListItemIcon sx={{ color: 'inherit' }}>
                   <DashboardIcon />
                 </ListItemIcon>
                 <ListItemText primary="Dashboard" />
               </ListItemButton>
             </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton onClick={() => handleNavigate('/new-job')} selected={isActiveRoute('/new-job')} sx={listItemButtonStyle}>
+                <ListItemIcon sx={{ color: 'inherit' }}>
+                  <WorkIcon />
+                </ListItemIcon>
+                <ListItemText primary="New Job" />
+              </ListItemButton>
+            </ListItem>
 
             <ListItem disablePadding>
-              <ListItemButton
-                onClick={() => handleNavigate('/configure-master')}
-                selected={isActiveRoute('/configure-master')}
-                sx={{
-                  mx: 1,
-                  borderRadius: 1,
-                  color: theme.palette.text.primary,
-                  '&.Mui-selected': {
-                    backgroundColor: theme.palette.primary.main + '1F', // 12% opacity
-                    color: theme.palette.primary.main,
-                    '&:hover': {
-                      backgroundColor: theme.palette.primary.main + '29', // 16% opacity
-                    },
-                  },
-                  '&:hover': {
-                    backgroundColor: theme.palette.action.hover,
-                  },
-                }}
-              >
+              <ListItemButton onClick={() => handleNavigate('/job-history')} selected={isActiveRoute('/job-history')} sx={listItemButtonStyle}>
+                <ListItemIcon sx={{ color: 'inherit' }}>
+                  <HistoryIcon />
+                </ListItemIcon>
+                <ListItemText primary="Job History" />
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem disablePadding>
+              <ListItemButton onClick={() => handleNavigate('/tenants')} selected={isActiveRoute('/tenants')} sx={listItemButtonStyle}>
+                <ListItemIcon sx={{ color: 'inherit' }}>
+                  <BusinessIcon />
+                </ListItemIcon>
+                <ListItemText primary="Tenants" />
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem disablePadding>
+              <ListItemButton onClick={() => handleNavigate('/reports')} selected={isActiveRoute('/reports')} sx={listItemButtonStyle}>
+                <ListItemIcon sx={{ color: 'inherit' }}>
+                  <AssessmentIcon />
+                </ListItemIcon>
+                <ListItemText primary="Reports" />
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem disablePadding>
+              <ListItemButton onClick={() => handleNavigate('/configure-master')} selected={isActiveRoute('/configure-master')} sx={listItemButtonStyle}>
                 <ListItemIcon sx={{ color: 'inherit' }}>
                   <ConfigureIcon />
                 </ListItemIcon>
@@ -109,25 +123,7 @@ const Sidebar: React.FC = () => {
             </ListItem>
 
             <ListItem disablePadding>
-              <ListItemButton
-                onClick={() => handleNavigate('/profile')}
-                selected={isActiveRoute('/profile')}
-                sx={{
-                  mx: 1,
-                  borderRadius: 1,
-                  color: theme.palette.text.primary,
-                  '&.Mui-selected': {
-                    backgroundColor: theme.palette.primary.main + '1F', // 12% opacity
-                    color: theme.palette.primary.main,
-                    '&:hover': {
-                      backgroundColor: theme.palette.primary.main + '29', // 16% opacity
-                    },
-                  },
-                  '&:hover': {
-                    backgroundColor: theme.palette.action.hover,
-                  },
-                }}
-              >
+              <ListItemButton onClick={() => handleNavigate('/profile')} selected={isActiveRoute('/profile')} sx={listItemButtonStyle}>
                 <ListItemIcon sx={{ color: 'inherit' }}>
                   <PersonIcon />
                 </ListItemIcon>
@@ -136,25 +132,7 @@ const Sidebar: React.FC = () => {
             </ListItem>
 
             <ListItem disablePadding>
-              <ListItemButton
-                onClick={() => handleNavigate('/theme')}
-                selected={isActiveRoute('/theme')}
-                sx={{
-                  mx: 1,
-                  borderRadius: 1,
-                  color: theme.palette.text.primary,
-                  '&.Mui-selected': {
-                    backgroundColor: theme.palette.primary.main + '1F', // 12% opacity
-                    color: theme.palette.primary.main,
-                    '&:hover': {
-                      backgroundColor: theme.palette.primary.main + '29', // 16% opacity
-                    },
-                  },
-                  '&:hover': {
-                    backgroundColor: theme.palette.action.hover,
-                  },
-                }}
-              >
+              <ListItemButton onClick={() => handleNavigate('/theme')} selected={isActiveRoute('/theme')} sx={listItemButtonStyle}>
                 <ListItemIcon sx={{ color: 'inherit' }}>
                   <PaletteIcon />
                 </ListItemIcon>
@@ -170,17 +148,18 @@ const Sidebar: React.FC = () => {
             <ListItem disablePadding>
               <ListItemButton
                 onClick={handleLogout}
+                color='primary'
                 sx={{
                   mx: 1,
                   borderRadius: 1,
-                  color: theme.palette.text.primary,
+                  color: "primary",
                   '&:hover': {
-                    backgroundColor: theme.palette.error.main + '0A', // 4% opacity
-                    color: theme.palette.error.main,
+                    backgroundColor: "primary", // 4% opacity
+                    color: "primary",
                   },
                 }}
               >
-                <ListItemIcon sx={{ color: 'inherit' }}>
+                <ListItemIcon sx={{ color: 'primary' }}>
                   <LogoutIcon />
                 </ListItemIcon>
                 <ListItemText primary="Logout" />

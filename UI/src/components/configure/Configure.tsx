@@ -44,8 +44,8 @@ const Configure: React.FC = () => {
           <Typography
             variant="h4"
             component="h1"
+            color='primary'
             style={{
-              color: theme.palette.text.primary,
               textTransform: 'capitalize',
               marginBottom: theme.spacing(2),
             }}
