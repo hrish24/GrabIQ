@@ -1,3 +1,4 @@
+// theme.ts
 import { createTheme, Theme } from '@mui/material/styles';
 
 export interface CustomThemeOptions {

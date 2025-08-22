@@ -1,3 +1,27 @@
+import { Typography, Box } from '@mui/material';
+
 export const Login = () => {
-  return <div style={{ background: 'inherit', height: '100vh' }}>Login</div>;
+  return (
+    <Box
+      sx={{
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'background.default',
+      }}
+    >
+      <Typography
+        variant="h4"
+        component="h1"
+        color="primary"
+        sx={{
+          textAlign: 'center',
+          fontWeight: 'bold',
+        }}
+      >
+        Login
+      </Typography>
+    </Box>
+  );
 };
