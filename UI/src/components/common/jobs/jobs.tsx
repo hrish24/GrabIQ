@@ -196,11 +196,10 @@ const Jobs = () => {
       <div style={{
         border: '1px solid #e0e0e0',
         borderRadius: '8px',
-        minHeight: '500px',
+        width: '100%',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
+        flexGrow: 1,
         textAlign: 'center',
         padding: '40px 30px'
       }}>
@@ -337,10 +336,8 @@ const Jobs = () => {
   };
 
   const mainGridStyle: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: '1fr 400px',
-    gap: '40px',
-    maxWidth: '1400px'
+    display: 'flex',
+    gap: '40px'
   };
 
   const leftColumnStyle: React.CSSProperties = {
@@ -359,7 +356,8 @@ const Jobs = () => {
 
   const rightColumnStyle: React.CSSProperties = {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    width: '100%',
   };
 
   return (
