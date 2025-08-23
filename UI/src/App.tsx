@@ -11,6 +11,8 @@ import Configure from './components/configure/Configure';
 import Category from './components/configure/master/category/Category';
 import DocumentType from './components/configure/master/documentType/DocumentType';
 import Subcategory from './components/configure/master/subcategory/Subcategory';
+import Profile from './components/profile/profile';
+import Jobs from './components/common/jobs/jobs';
 
 const LayoutWrapper: React.FC = () => {
   const location = useLocation();
@@ -65,12 +67,16 @@ const LayoutWrapper: React.FC = () => {
             path="/profile"
             element={
               <Box sx={{ p: 3 }}>
-                <Typography variant="h4" component="h1" gutterBottom color="text.primary">
-                  Profile
-                </Typography>
-                <Typography variant="body1" color="text.secondary">
-                  User profile information goes here...
-                </Typography>
+                <Profile />
+              </Box>
+            }
+          />
+
+          <Route
+            path="/new-job"
+            element={
+              <Box sx={{ p: 3 }}>
+                <Jobs />
               </Box>
             }
           />
