@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS category (
+    category_id BIGSERIAL PRIMARY KEY,
+    category_name VARCHAR(100) NOT NULL UNIQUE,
+    category_description VARCHAR(500),
+    created_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    modified_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_by VARCHAR(50) NOT NULL,
+    updated_by VARCHAR(50) NOT NULL
+);
